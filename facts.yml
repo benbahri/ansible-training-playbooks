@@ -1,0 +1,8 @@
+---
+- name: Output facts in the playbook
+  hosts: webservers
+  gather_facts: yes
+  tasks:
+  - name: Print ansible facts
+    debug:
+      msg: Host ip address of {{ansible_fqdn}} is {{ansible_eth1.ipv4.address}}

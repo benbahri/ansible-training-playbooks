@@ -1,0 +1,14 @@
+---
+- name: Install package and print result
+  hosts: dbservers
+  become: true
+  tasks:
+  - name: install package
+    apt:
+      name: mysql-server
+      state: present
+      update_cache: yes
+    register: install_result
+
+  - debug:
+      var: install_result

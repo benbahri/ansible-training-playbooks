@@ -1,0 +1,11 @@
+---
+- name: MariaDB server installation
+  hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: Install latest MariaDB server when host RAM greater 3000 MB
+    yum:
+      name: mariadb-server
+      state: latest
+    when: ansible_memtotal_mb > 900

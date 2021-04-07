@@ -1,0 +1,10 @@
+---
+- name: install FTP server on non prod hosts
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: install vsftpd
+    yum:
+      name: vsftpd
+      state: latest
+    when: stage != "prod"

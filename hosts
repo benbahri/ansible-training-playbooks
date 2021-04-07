@@ -1,0 +1,33 @@
+[web_dev]
+centos01 ansible_host=10.0.0.21
+
+[web_prod]
+centos02 ansible_host=10.0.0.22
+
+[db_dev]
+ubuntu01 ansible_host=10.0.0.31
+
+[db_prod]
+ubuntu02 ansible_host=10.0.0.32
+
+[webservers:children]
+web_dev
+web_prod
+
+[webservers:vars]
+ansible_user=vagrant
+
+[dbservers:children]
+db_dev
+db_prod
+
+[dbservers:vars]
+#ansible_user=ubuntu
+
+[development:children]
+web_dev
+db_dev
+
+[production:children]
+web_prod
+db_prod

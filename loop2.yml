@@ -1,0 +1,14 @@
+---
+- name: check if service is started
+  hosts: webservers
+  become: yes
+  vars:
+    services:
+    - httpd
+    - sshd
+  tasks:
+  - name: check if service is started
+    service:
+      name: "{{item}}" 
+      state: started
+    loop: "{{services}}"

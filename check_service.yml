@@ -1,0 +1,10 @@
+---
+- name: check if service is enabled and started
+  hosts: all
+  become: yes
+  tasks:
+  - name: check if the service is ensabled and started
+    service:
+      name: "{{service}}"
+      state: started
+      enabled: true

@@ -1,0 +1,13 @@
+---
+- name: Hash Demo
+  hosts: centos01
+  become: yes
+  tasks:
+  - name: Create users from hash
+    user:
+      name: "{{item.name}}"
+      state: present
+      groups: "{{item.groups}}"
+    loop:
+    - { name: 'jane', groups: 'wheel' }
+    - { name: 'joe', groups: 'root' }

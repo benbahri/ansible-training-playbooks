@@ -1,0 +1,11 @@
+---
+- name: MariaDB Installation
+  hosts: webservers
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: try install mariadb
+    yum:
+      name: mariadb-server
+      state: latest
+    when: ansible_memtotal_mb > 900
