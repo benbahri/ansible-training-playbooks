@@ -1,6 +1,6 @@
 ---
 - name: apache server installed
-  hosts: webservers
+  hosts: all
   become: yes
   tasks:
   - name: install apache
